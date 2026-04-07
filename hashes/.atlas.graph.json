@@ -8,48 +8,6 @@
   "edges": [
     {
       "from": "types",
-      "to": "tags",
-      "type": "LAYER_DEPENDENCY",
-      "impact": "LOW",
-      "reason": "tags.h uses no types directly, but conceptually precedes services"
-    },
-    {
-      "from": "types",
-      "to": "services",
-      "type": "LAYER_DEPENDENCY",
-      "impact": "HIGH",
-      "reason": "services.h includes types/archive.h, types/config.h, types/errors.h"
-    },
-    {
-      "from": "tags",
-      "to": "services",
-      "type": "LAYER_DEPENDENCY",
-      "impact": "HIGH",
-      "reason": "services.h includes tags.h for Context class"
-    },
-    {
-      "from": "tags",
-      "to": "layers",
-      "type": "LAYER_DEPENDENCY",
-      "impact": "HIGH",
-      "reason": "layers.h includes tags.h for Context"
-    },
-    {
-      "from": "services",
-      "to": "layers",
-      "type": "LAYER_DEPENDENCY",
-      "impact": "HIGH",
-      "reason": "layers.h includes services.h for service implementations"
-    },
-    {
-      "from": "layers",
-      "to": "runtime",
-      "type": "LAYER_DEPENDENCY",
-      "impact": "HIGH",
-      "reason": "runtime.h includes layers.h"
-    },
-    {
-      "from": "types",
       "to": "ops.archive",
       "type": "LAYER_DEPENDENCY",
       "impact": "HIGH",
@@ -89,13 +47,6 @@
       "type": "SCHEMA_CONTRACT",
       "impact": "HIGH",
       "reason": "main.cpp calls cli::resume, cli::add, cli::help"
-    },
-    {
-      "from": "runtime",
-      "to": "main",
-      "type": "SCHEMA_CONTRACT",
-      "impact": "MEDIUM",
-      "reason": "main.cpp could use runtime but currently uses direct ops"
     }
   ],
   "dirty_propagation_rule": "When a node's fidelity_level changes to DIRTY, recursively mark all nodes reachable via outgoing edges as DIRTY"
