@@ -1,0 +1,50 @@
+# Build directories
+build/
+*.build/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+CMakePresets.json
+
+# Compiled objects
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+
+# Archives
+deer_archive.json
+*.archive
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dependencies (if downloaded locally)
+deps/
+vendor/
+
+# Testing
+*.log
+test_results/
+
+# Coverage
+*.gcov
+*.gcno
+*.gcda
+coverage/

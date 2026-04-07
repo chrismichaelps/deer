@@ -1,0 +1,72 @@
+{
+  "shard_id": "@root",
+  "state_anchor": "BigInt(0x1)",
+  "parent_bridge": "null",
+  "git_anchor": "HEAD",
+  "cache_integrity": "VERIFIED",
+  "nodes": {
+    "types": {
+      "file_path": "@root/include/deer/types",
+      "hash_reference": "@root/hashes/include/deer/types",
+      "grammar_ref": "@root/hashes/grammar/cpp.hash.md",
+      "dependencies": [],
+      "fidelity_level": "Active"
+    },
+    "tags": {
+      "file_path": "@root/include/deer/tags.h",
+      "hash_reference": "@root/hashes/include/deer/tags.hash.md",
+      "grammar_ref": "@root/hashes/grammar/cpp.hash.md",
+      "dependencies": ["@root/hashes/include/deer/types"],
+      "fidelity_level": "Active"
+    },
+    "services": {
+      "file_path": "@root/include/deer/services.h",
+      "hash_reference": "@root/hashes/include/deer/services.hash.md",
+      "grammar_ref": "@root/hashes/grammar/cpp.hash.md",
+      "dependencies": ["@root/hashes/include/deer/tags.hash.md", "@root/hashes/include/deer/types"],
+      "fidelity_level": "Active"
+    },
+    "layers": {
+      "file_path": "@root/include/deer/layers.h",
+      "hash_reference": "@root/hashes/include/deer/layers.hash.md",
+      "grammar_ref": "@root/hashes/grammar/cpp.hash.md",
+      "dependencies": ["@root/hashes/include/deer/tags.hash.md", "@root/hashes/include/deer/services.hash.md"],
+      "fidelity_level": "Active"
+    },
+    "runtime": {
+      "file_path": "@root/include/deer/runtime.h",
+      "hash_reference": "@root/hashes/include/deer/runtime.hash.md",
+      "grammar_ref": "@root/hashes/grammar/cpp.hash.md",
+      "dependencies": ["@root/hashes/include/deer/tags.hash.md", "@root/hashes/include/deer/services.hash.md", "@root/hashes/include/deer/layers.hash.md"],
+      "fidelity_level": "Active"
+    },
+    "ops.archive": {
+      "file_path": "@root/include/deer/ops/archive.h",
+      "hash_reference": "@root/hashes/include/deer/ops/archive.hash.md",
+      "grammar_ref": "@root/hashes/grammar/cpp.hash.md",
+      "dependencies": ["@root/hashes/include/deer/types"],
+      "fidelity_level": "Active"
+    },
+    "ops.compress": {
+      "file_path": "@root/include/deer/ops/compress.h",
+      "hash_reference": "@root/hashes/include/deer/ops/compress.hash.md",
+      "grammar_ref": "@root/hashes/grammar/cpp.hash.md",
+      "dependencies": ["@root/hashes/include/deer/types"],
+      "fidelity_level": "Active"
+    },
+    "cli": {
+      "file_path": "@root/include/deer/cli/cli.h",
+      "hash_reference": "@root/hashes/include/deer/cli/cli.hash.md",
+      "grammar_ref": "@root/hashes/grammar/cpp.hash.md",
+      "dependencies": ["@root/hashes/include/deer/types"],
+      "fidelity_level": "Active"
+    },
+    "main": {
+      "file_path": "@root/src/main.cpp",
+      "hash_reference": "@root/hashes/src/main.hash.md",
+      "grammar_ref": "@root/hashes/grammar/cpp.hash.md",
+      "dependencies": ["@root/hashes/include/deer/types", "@root/hashes/include/deer/ops", "@root/hashes/include/deer/cli"],
+      "fidelity_level": "Active"
+    }
+  }
+}

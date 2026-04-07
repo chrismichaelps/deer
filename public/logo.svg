@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="250" height="250" fill="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Organic blob mask mirroring the original Elk logo shape -->
+    <mask id="blob-mask" maskUnits="userSpaceOnUse" style="mask-type:alpha">
+      <path fill="white" d="M244 123c0 64.617-38.383 112-103 112-64.617 0-103-30.883-103-95.5C38 111.194-8.729 36.236 8 16 29.46-9.959 88.689 6 125 6c64.617 0 119 52.383 119 117Z" />
+    </mask>
+  </defs>
+  
+  <g mask="url(#blob-mask)">
+    <!-- Antlers -->
+    <g stroke="#c16929" stroke-width="14" stroke-linecap="round" fill="none" stroke-linejoin="round">
+      <path d="M100,105 Q80,50 90,15" />
+      <path d="M93,70 Q60,40 50,30" />
+      <path d="M85,45 Q50,20 40,25" />
+
+      <path d="M150,105 Q170,50 160,15" />
+      <path d="M157,70 Q190,40 200,30" />
+      <path d="M165,45 Q200,20 210,25" />
+    </g>
+
+    <!-- Ears -->
+    <path fill="#ea9e44" d="M75,110 Q30,100 15,70 Q50,60 85,100 Z" />
+    <path fill="#ea9e44" d="M175,110 Q220,100 235,70 Q200,60 165,100 Z" />
+
+    <!-- Face Base -->
+    <path fill="#cf7e33" d="M125,235 Q60,180 75,110 Q125,95 175,110 Q190,180 125,235 Z" />
+
+    <!-- Snout Bridge highlight -->
+    <path fill="#ea9e44" d="M125,235 Q90,170 105,115 Q125,100 145,115 Q160,170 125,235 Z" />
+    
+    <!-- Deep Snout core / Nose -->
+    <path fill="#c16929" d="M125,235 Q105,200 115,145 Q125,130 135,145 Q145,200 125,235 Z" />
+  </g>
+</svg>
