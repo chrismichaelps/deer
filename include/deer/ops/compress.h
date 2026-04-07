@@ -15,11 +15,6 @@ namespace deer::ops {
 /** @deer.ops.compressArchiveWithLevel */
 inline void compressArchiveWithLevel(ArchiveState &state, config::CompressionLevel level);
 
-/** @deer.ops.compressArchive */
-inline void compressArchive(ArchiveState &state) {
-  compressArchiveWithLevel(state, config::DEFAULT_COMPRESSION_LEVEL);
-}
-
 /** @deer.ops.decompressArchive */
 inline void decompressArchive(ArchiveState &state);
 
