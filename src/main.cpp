@@ -1,30 +1,38 @@
 #include <cstring>
-#include <deer/cli/cli.h>
-#include <deer/ops/archive.h>
-#include <deer/ops/compress.h>
-#include <deer/types/archive.h>
-#include <deer/types/config.h>
-#include <deer/types/errors.h>
+#include <deer/layers/cli_layer.h>
+#include <deer/layers/compress_layer.h>
+#include <deer/layers/config_layer.h>
+#include <deer/layers/logger_layer.h>
+#include <deer/layers/storage_layer.h>
 #include <deer/types/version.h>
 #include <iostream>
 
 /** @deer.main */
 int main(int argc, char **argv) {
   std::cout << deer::FULL_NAME << " v" << deer::VERSION << "\n\n";
-  auto state = deer::ops::load(deer::config::ARCHIVE_PATH);
+
+  /** @deer.main.LayerGraph */
+  const auto config   = deer::layer::make_config_layer().build();
+  const auto logger   = deer::layer::make_logger_layer().build(config);
+  const auto storage  = deer::layer::make_storage_layer().build(config);
+  const auto compress = deer::layer::make_compress_layer().build(config);
+  const auto cli      = deer::layer::make_cli_layer().build(logger, storage, compress);
+
+  /** @deer.main.Run */
+  auto state = storage.load();
   if (state.recentTurns.empty() && state.memorySlots.empty()) {
-    std::cout << "[Deer] New archive initialized.\n";
+    logger.log("[Deer] New archive initialized.");
   }
 
-  std::string cmd = (argc > 1) ? argv[1] : deer::config::CMD_HELP;
+  const std::string cmd = (argc > 1) ? argv[1] : deer::config::CMD_HELP;
 
   if (cmd == deer::config::CMD_RESUME) {
-    deer::cli::resume(state);
+    cli.resume(state);
   } else if (cmd == deer::config::CMD_ADD) {
-    deer::cli::add(state);
-    deer::ops::save(state, deer::config::ARCHIVE_PATH);
+    cli.add(state);
+    storage.save(state);
   } else if (cmd == deer::config::CMD_COMPRESS) {
-    deer::config::CompressionLevel level = deer::config::DEFAULT_COMPRESSION_LEVEL;
+    deer::config::CompressionLevel level = config.defaultLevel;
     if (argc > 2) {
       if (std::strcmp(argv[2], deer::config::CMD_ARG_FAST) == 0) {
         level = deer::config::CompressionLevel::Fast;
@@ -34,12 +42,12 @@ int main(int argc, char **argv) {
         level = deer::config::CompressionLevel::Balanced;
       }
     }
-    deer::ops::compressArchiveWithLevel(state, level);
-    deer::ops::save(state, deer::config::ARCHIVE_PATH);
+    compress.compress(state, level);
+    storage.save(state);
   } else if (cmd == deer::config::CMD_DECOMPRESS) {
-    deer::ops::decompressArchive(state);
+    compress.decompress(state);
   } else {
-    deer::cli::help();
+    cli.help();
   }
 
   return 0;

@@ -92,4 +92,25 @@ inline const char *CMD_DECOMPRESS = "decompress";
 /** @deer.config.CmdHelp.Constant */
 inline const char *CMD_HELP = "help";
 
+/** @deer.config.Service */
+struct ConfigService {
+  std::string      archivePath      = ARCHIVE_PATH;
+  std::size_t      maxRecentTurns   = MAX_RECENT_TURNS;
+  std::size_t      chunkSize        = CHUNK_SIZE;
+  std::size_t      targetSlots      = TARGET_SLOTS;
+  int              quantBits        = QUANT_BITS;
+  CompressionLevel defaultLevel     = DEFAULT_COMPRESSION_LEVEL;
+  std::size_t      featureCountFast = FEATURE_COUNT_FAST;
+  std::size_t      featureCountBal  = FEATURE_COUNT_BALANCED;
+  std::size_t      featureCountMax  = FEATURE_COUNT_MAX;
+  std::size_t      maxTokenEstimate = MAX_TOKEN_ESTIMATE;
+  double           normLengthDenom  = NORMALIZE_LENGTH_DENOM;
+  double           normWordDenom    = NORMALIZE_WORD_DENOM;
+  double           quantRange       = QUANTIZATION_RANGE;
+  int              quantMin         = QUANTIZATION_MIN;
+  int              quantMax         = QUANTIZATION_MAX;
+  std::string      method           = COMPRESSION_METHOD;
+  std::string      logLevel         = "INFO";
+};
+
 } // namespace deer::config

@@ -1,6 +1,6 @@
 {
   "shard_id": "@root",
-  "state_anchor": "BigInt(0x1)",
+  "state_anchor": "BigInt(0x2)",
   "parent_bridge": "null",
   "git_anchor": "HEAD",
   "cache_integrity": "VERIFIED",
@@ -8,6 +8,13 @@
     "types": {
       "file_path": "@root/include/deer/types",
       "hash_reference": "@root/hashes/include/deer/types",
+      "grammar_ref": "@root/hashes/grammar/cpp.hash.md",
+      "dependencies": [],
+      "fidelity_level": "Active"
+    },
+    "layer": {
+      "file_path": "@root/include/deer/layer.h",
+      "hash_reference": "@root/hashes/include/deer/layer.hash.md",
       "grammar_ref": "@root/hashes/grammar/cpp.hash.md",
       "dependencies": [],
       "fidelity_level": "Active"
@@ -26,6 +33,55 @@
       "dependencies": ["@root/hashes/include/deer/types"],
       "fidelity_level": "Active"
     },
+    "layers.config": {
+      "file_path": "@root/include/deer/layers/config_layer.h",
+      "hash_reference": "@root/hashes/include/deer/layers/config_layer.hash.md",
+      "grammar_ref": "@root/hashes/grammar/cpp.hash.md",
+      "dependencies": ["@root/hashes/include/deer/layer.hash.md", "@root/hashes/include/deer/types"],
+      "fidelity_level": "Active"
+    },
+    "layers.logger": {
+      "file_path": "@root/include/deer/layers/logger_layer.h",
+      "hash_reference": "@root/hashes/include/deer/layers/logger_layer.hash.md",
+      "grammar_ref": "@root/hashes/grammar/cpp.hash.md",
+      "dependencies": ["@root/hashes/include/deer/layer.hash.md", "@root/hashes/include/deer/types"],
+      "fidelity_level": "Active"
+    },
+    "layers.storage": {
+      "file_path": "@root/include/deer/layers/storage_layer.h",
+      "hash_reference": "@root/hashes/include/deer/layers/storage_layer.hash.md",
+      "grammar_ref": "@root/hashes/grammar/cpp.hash.md",
+      "dependencies": ["@root/hashes/include/deer/layer.hash.md", "@root/hashes/include/deer/types", "@root/hashes/include/deer/ops/archive.hash.md"],
+      "fidelity_level": "Active"
+    },
+    "layers.compress": {
+      "file_path": "@root/include/deer/layers/compress_layer.h",
+      "hash_reference": "@root/hashes/include/deer/layers/compress_layer.hash.md",
+      "grammar_ref": "@root/hashes/grammar/cpp.hash.md",
+      "dependencies": ["@root/hashes/include/deer/layer.hash.md", "@root/hashes/include/deer/types", "@root/hashes/include/deer/ops/compress.hash.md"],
+      "fidelity_level": "Active"
+    },
+    "layers.cli": {
+      "file_path": "@root/include/deer/layers/cli_layer.h",
+      "hash_reference": "@root/hashes/include/deer/layers/cli_layer.hash.md",
+      "grammar_ref": "@root/hashes/grammar/cpp.hash.md",
+      "dependencies": ["@root/hashes/include/deer/layer.hash.md", "@root/hashes/include/deer/layers/logger_layer.hash.md", "@root/hashes/include/deer/layers/storage_layer.hash.md", "@root/hashes/include/deer/layers/compress_layer.hash.md"],
+      "fidelity_level": "Active"
+    },
+    "layers.test.storage": {
+      "file_path": "@root/include/deer/layers/test/storage_layer_test.h",
+      "hash_reference": "@root/hashes/include/deer/layers/test/storage_layer_test.hash.md",
+      "grammar_ref": "@root/hashes/grammar/cpp.hash.md",
+      "dependencies": ["@root/hashes/include/deer/layer.hash.md", "@root/hashes/include/deer/types"],
+      "fidelity_level": "Active"
+    },
+    "layers.test.compress": {
+      "file_path": "@root/include/deer/layers/test/compress_layer_test.h",
+      "hash_reference": "@root/hashes/include/deer/layers/test/compress_layer_test.hash.md",
+      "grammar_ref": "@root/hashes/grammar/cpp.hash.md",
+      "dependencies": ["@root/hashes/include/deer/layer.hash.md", "@root/hashes/include/deer/types"],
+      "fidelity_level": "Active"
+    },
     "cli": {
       "file_path": "@root/include/deer/cli/cli.h",
       "hash_reference": "@root/hashes/include/deer/cli/cli.hash.md",
@@ -37,7 +93,7 @@
       "file_path": "@root/src/main.cpp",
       "hash_reference": "@root/hashes/src/main.hash.md",
       "grammar_ref": "@root/hashes/grammar/cpp.hash.md",
-      "dependencies": ["@root/hashes/include/deer/types", "@root/hashes/include/deer/ops", "@root/hashes/include/deer/cli"],
+      "dependencies": ["@root/hashes/include/deer/layers/config_layer.hash.md", "@root/hashes/include/deer/layers/logger_layer.hash.md", "@root/hashes/include/deer/layers/storage_layer.hash.md", "@root/hashes/include/deer/layers/compress_layer.hash.md", "@root/hashes/include/deer/layers/cli_layer.hash.md"],
       "fidelity_level": "Active"
     }
   }
