@@ -12,7 +12,7 @@ A Hierarchical Memory System for Large Language Models
 
 ---
 
-> Updated: Tue Apr 7 2026
+> Updated: Wed Apr 8 2026
 > Version: 0.6.0
 
 ## Abstract
