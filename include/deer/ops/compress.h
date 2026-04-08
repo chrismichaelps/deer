@@ -13,7 +13,9 @@
 
 namespace deer::ops {
 
-/** @deer.ops.detail.fillCoreFive */
+/**
+ * Fills the core five features into the target matrix row.
+ */
 inline void fill_core_five(Eigen::MatrixXd &feats, Eigen::Index row,
                             const std::string &text, size_t text_len, size_t num_words) {
   feats(row, 0) = static_cast<double>(text_len)  / config::NORMALIZE_LENGTH_DENOM;
@@ -24,7 +26,9 @@ inline void fill_core_five(Eigen::MatrixXd &feats, Eigen::Index row,
   feats(row, 4) = static_cast<double>(text.find("decision") != std::string::npos);
 }
 
-/** @deer.ops.detail.fillFastExtra */
+/**
+ * Fills the extra features used in Fast compression mode.
+ */
 inline void fill_fast_extra(Eigen::MatrixXd &feats, Eigen::Index row,
                              const std::string &text, size_t text_len, size_t num_words) {
   const double dlen = std::max(static_cast<double>(text_len), 1.0);
@@ -52,7 +56,9 @@ inline void fill_fast_extra(Eigen::MatrixXd &feats, Eigen::Index row,
   feats(row, 11) = avg_word_len / 12.0;
 }
 
-/** @deer.ops.detail.fillBalancedRich */
+/**
+ * Fills the rich balanced features used in Balanced compression mode.
+ */
 inline void fill_balanced_rich(Eigen::MatrixXd &feats, Eigen::Index row,
                                 const std::string &text, size_t text_len, size_t num_words) {
   const double dlen   = std::max(static_cast<double>(text_len), 1.0);
@@ -83,7 +89,9 @@ inline void fill_balanced_rich(Eigen::MatrixXd &feats, Eigen::Index row,
   feats(row, 10) = static_cast<double>(questions) / std::max(static_cast<double>(sentences) + 1.0, 1.0);
 }
 
-/** @deer.ops.detail.fillBalancedExtra */
+/**
+ * Fills the extra balanced features used in Balanced compression mode.
+ */
 inline void fill_balanced_extra(Eigen::MatrixXd &feats, Eigen::Index row,
                                  const std::string &text, size_t text_len, size_t num_words) {
   const double dlen   = std::max(static_cast<double>(text_len), 1.0);
@@ -122,7 +130,9 @@ inline void fill_balanced_extra(Eigen::MatrixXd &feats, Eigen::Index row,
   feats(row, 19) = static_cast<double>(excl) / dwords;
 }
 
-/** @deer.ops.detail.fillMaxExtra */
+/**
+ * Fills the maximal features used in Max compression mode.
+ */
 inline void fill_max_extra(Eigen::MatrixXd &feats, Eigen::Index row,
                             const std::string &text, size_t text_len, size_t num_words) {
   const double dlen   = std::max(static_cast<double>(text_len), 1.0);
@@ -167,7 +177,9 @@ inline void fill_max_extra(Eigen::MatrixXd &feats, Eigen::Index row,
                                        text.find("def ")   != std::string::npos);
 }
 
-/** @deer.ops.detail.fillChunkFeatures */
+/**
+ * Computes chunk features recursively for the given sequence of turns.
+ */
 inline size_t fill_chunk_features(Eigen::MatrixXd &feats, const json &turns,
                                   size_t chunk_idx, size_t chunk_size,
                                   config::CompressionLevel level) {
@@ -212,13 +224,9 @@ inline size_t fill_chunk_features(Eigen::MatrixXd &feats, const json &turns,
   return chunk_tokens;
 }
 
-/** @deer.ops.compressArchiveWithLevel */
-inline void compressArchiveWithLevel(ArchiveState &state, config::CompressionLevel level);
-
-/** @deer.ops.decompressArchive */
-inline void decompressArchive(ArchiveState &state);
-
-/** @deer.ops.decompressArchive */
+/**
+ * Reverses the KVTC and TurboQuant pipeline to reconstruct the numeric feature matrix.
+ */
 inline void decompressArchive(ArchiveState &state) {
   if (!state.codedArchive.is_object() || !state.codedArchive.contains("__deflate")) {
     std::cout << "[Deer] No compressed archive found.\n";
@@ -254,7 +262,9 @@ inline void decompressArchive(ArchiveState &state) {
   const bool has_per_channel = state.codedArchive.contains("col_min") &&
                                state.codedArchive.contains("col_max");
 
-  /** @deer.ops.decompressArchive.PerChannelDequant */
+  /**
+   * Applies per-channel dequantization to interpret variables.
+   */
   Eigen::MatrixXd quantized(num_chunks, num_features);
   for (Eigen::Index i = 0; i < num_chunks; ++i) {
     for (Eigen::Index j = 0; j < num_features; ++j) {
@@ -270,7 +280,9 @@ inline void decompressArchive(ArchiveState &state) {
     }
   }
 
-  /** @deer.ops.decompressArchive.InvertRotation */
+  /**
+   * Inverts the randomized orthogonal rotation applied during compression.
+   */
   Eigen::MatrixXd restored = quantized;
   if (state.codedArchive.contains("rotation_seed")) {
     const unsigned int seed = state.codedArchive["rotation_seed"].get<unsigned int>();
@@ -293,7 +305,9 @@ inline void decompressArchive(ArchiveState &state) {
             << "\n";
 }
 
-/** @deer.ops.compressArchiveWithLevel */
+/**
+ * Compresses an archive state utilizing the KVTC and TurboQuant steps.
+ */
 inline void compressArchiveWithLevel(ArchiveState &state, config::CompressionLevel level) {
   if (state.recentTurns.empty()) {
     std::cout << "[Deer] Nothing to compress.\n";
@@ -327,18 +341,24 @@ inline void compressArchiveWithLevel(ArchiveState &state, config::CompressionLev
 
   size_t total_tokens = 0;
 
-  /** @deer.ops.features.Extract */
+  /**
+   * Stage 1: Fast numeric feature extraction layer.
+   */
   for (size_t chunk_idx = 0; chunk_idx < num_chunks; ++chunk_idx) {
     total_tokens += fill_chunk_features(feats, state.recentTurns, chunk_idx, chunk_size, level);
   }
 
   state.tokenEstimate = total_tokens;
 
-  /** @deer.ops.KVTC.SVD */
+  /**
+   * Stage 2: SVD-based Principal Component extraction.
+   */
   Eigen::JacobiSVD<Eigen::MatrixXd> svd(feats, Eigen::ComputeFullV);
   const Eigen::MatrixXd coeffs = feats * svd.matrixV();
 
-  /** @deer.ops.TurboQuant.Rotation */
+  /**
+   * Stage 3: Randomized orthogonal rotation for noise redistribution.
+   */
   const unsigned int seed = static_cast<unsigned int>(
       std::chrono::high_resolution_clock::now().time_since_epoch().count() & 0xFFFFFFFF);
   std::srand(seed);
@@ -349,7 +369,9 @@ inline void compressArchiveWithLevel(ArchiveState &state, config::CompressionLev
           .householderQ();
   const Eigen::MatrixXd rotated = coeffs * rotation_matrix;
 
-  /** @deer.ops.TurboQuant.PerChannelQuant */
+  /**
+   * Stage 4: Per-Channel INT4 quantization encoding.
+   */
   json col_min_arr = json::array();
   json col_max_arr = json::array();
   json coded;

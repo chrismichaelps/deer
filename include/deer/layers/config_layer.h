@@ -4,7 +4,9 @@
 
 namespace deer::layer {
 
-/** @deer.layers.Config.Live */
+/**
+ * Constructs the ConfigService instance with default parameters.
+ */
 inline Layer<config::ConfigService> make_config_layer() {
   return Layer<config::ConfigService>{[]() -> config::ConfigService {
     return config::ConfigService{};

@@ -5,11 +5,15 @@
 
 namespace deer {
 
-/** @deer.types.CompressService */
+/**
+ * Key-Value Tensor Compression (KVTC) Service.
+ * Provides high-level operations for reducing conversation dimensionality
+ * and restoring state.
+ */
 struct CompressService {
-  /** @deer.types.CompressService.Compress */
+  /// Compresses the archive's recent turns using the specified level.
   std::function<void(ArchiveState &, config::CompressionLevel)> compress = nullptr;
-  /** @deer.types.CompressService.Decompress */
+  /// Decompresses the stored metadata back into a feature matrix.
   std::function<void(ArchiveState &)> decompress = nullptr;
 };
 

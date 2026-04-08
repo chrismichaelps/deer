@@ -6,7 +6,9 @@
 
 namespace deer::layer {
 
-/** @deer.layers.Compress.Live */
+/**
+ * Constructs the CompressService using its concrete dependencies.
+ */
 inline Layer<CompressService, config::ConfigService> make_compress_layer() {
   return Layer<CompressService, config::ConfigService>{
       [](const config::ConfigService &) -> CompressService {

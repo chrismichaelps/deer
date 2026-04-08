@@ -6,7 +6,9 @@
 
 namespace deer::layer {
 
-/** @deer.layers.Storage.Live */
+/**
+ * Constructs the StorageService using its concrete dependencies.
+ */
 inline Layer<StorageService, config::ConfigService> make_storage_layer() {
   return Layer<StorageService, config::ConfigService>{
       [](const config::ConfigService &cfg) -> StorageService {

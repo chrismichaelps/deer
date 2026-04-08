@@ -4,95 +4,99 @@
 
 namespace deer::config {
 
-/** @deer.config.ArchivePath.Constant */
+/// Default path for the archive JSON file.
 inline const char *ARCHIVE_PATH = "deer_archive.json";
 
-/** @deer.config.MaxRecentTurns.Constant */
+/// Number of recent conversation turns to keep uncompressed.
 constexpr size_t MAX_RECENT_TURNS = 30;
 
-/** @deer.config.ChunkSize.Constant */
+/// Number of turns grouped into a single compression chunk.
 constexpr size_t CHUNK_SIZE = 8;
 
-/** @deer.config.TargetSlots.Constant */
+/// Target number of memory slots for recall.
 constexpr size_t TARGET_SLOTS = 25;
 
-/** @deer.config.QuantBits.Constant */
+/// Number of bits for integer quantization.
 constexpr int QUANT_BITS = 4;
 
-/** @deer.config.CompressionLevel.Enum */
+/**
+ * Supported compression effort levels.
+ */
 enum class CompressionLevel : uint8_t {
-  Fast,     /** @deer.config.CompressionLevel.Fast */
-  Balanced, /** @deer.config.CompressionLevel.Balanced */
-  Max       /** @deer.config.CompressionLevel.Max */
+  Fast,     ///< Optimized for speed, fewer features.
+  Balanced, ///< Recommended tradeoff between speed and recall.
+  Max       ///< Maximum feature extraction, slower but more robust.
 };
 
-/** @deer.config.DefaultCompressionLevel.Constant */
+/// Default compression level used if none is specified.
 constexpr CompressionLevel DEFAULT_COMPRESSION_LEVEL = CompressionLevel::Balanced;
 
-/** @deer.config.FeatureCount.Fast */
+/// Feature dimensionality for the 'Fast' compression level.
 constexpr size_t FEATURE_COUNT_FAST = 12;
 
-/** @deer.config.FeatureCount.Balanced */
+/// Feature dimensionality for the 'Balanced' compression level.
 constexpr size_t FEATURE_COUNT_BALANCED = 20;
 
-/** @deer.config.FeatureCount.Max */
+/// Feature dimensionality for the 'Max' compression level.
 constexpr size_t FEATURE_COUNT_MAX = 28;
 
-/** @deer.config.MaxTokenEstimate.Constant */
+/// Rough estimate of characters per token for heuristic counting.
 constexpr size_t MAX_TOKEN_ESTIMATE = 50000;
 
-/** @deer.config.NormalizeLength.Denominator */
+/// Normalization denominator for text length features.
 constexpr double NORMALIZE_LENGTH_DENOM = 20000.0;
 
-/** @deer.config.NormalizeWord.Denominator */
+/// Normalization denominator for word count features.
 constexpr double NORMALIZE_WORD_DENOM = 3000.0;
 
-/** @deer.config.QuantizationRange.Constant */
+/// Scaling factor for global quantization.
 constexpr double QUANTIZATION_RANGE = 15.0;
 
-/** @deer.config.QuantizationMin.Constant */
+/// Minimum global quantization value.
 constexpr int QUANTIZATION_MIN = -8;
 
-/** @deer.config.QuantizationMax.Constant */
+/// Maximum global quantization value.
 constexpr int QUANTIZATION_MAX = 7;
 
-/** @deer.config.MethodVersion.Constant */
+/// Identifier for the current compression implementation.
 inline const char *COMPRESSION_METHOD = "deer_v0.6_research";
 
-/** @deer.config.LevelFast.String */
+/// CLI matching string for the Fast level.
 inline const char *LEVEL_FAST = "fast";
 
-/** @deer.config.LevelBalanced.String */
+/// CLI matching string for the Balanced level.
 inline const char *LEVEL_BALANCED = "balanced";
 
-/** @deer.config.LevelMax.String */
+/// CLI matching string for the Max level.
 inline const char *LEVEL_MAX = "max";
 
-/** @deer.config.CmdArg.Fast */
+/// CLI argument switch for the Fast level.
 inline const char *CMD_ARG_FAST = "--fast";
 
-/** @deer.config.CmdArg.Max */
+/// CLI argument switch for the Max level.
 inline const char *CMD_ARG_MAX = "--max";
 
-/** @deer.config.CmdArg.Balanced */
+/// CLI argument switch for the Balanced level.
 inline const char *CMD_ARG_BALANCED = "--balanced";
 
-/** @deer.config.CmdResume.Constant */
+/// CLI command string for the resume command.
 inline const char *CMD_RESUME = "resume";
 
-/** @deer.config.CmdAdd.Constant */
+/// CLI command string for the add command.
 inline const char *CMD_ADD = "add";
 
-/** @deer.config.CmdCompress.Constant */
+/// CLI command string for the compress command.
 inline const char *CMD_COMPRESS = "compress";
 
-/** @deer.config.CmdDecompress.Constant */
+/// CLI command string for the decompress command.
 inline const char *CMD_DECOMPRESS = "decompress";
 
-/** @deer.config.CmdHelp.Constant */
+/// CLI command string for the help command.
 inline const char *CMD_HELP = "help";
 
-/** @deer.config.Service */
+/**
+ * Service configuration schema containing settings.
+ */
 struct ConfigService {
   std::string      archivePath      = ARCHIVE_PATH;
   std::size_t      maxRecentTurns   = MAX_RECENT_TURNS;

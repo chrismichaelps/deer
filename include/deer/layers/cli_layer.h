@@ -8,7 +8,9 @@
 
 namespace deer::layer {
 
-/** @deer.layers.Cli.Live */
+/**
+ * Constructs the CliService using its concrete dependencies.
+ */
 inline Layer<CliService, LoggerService, StorageService, CompressService> make_cli_layer() {
   return Layer<CliService, LoggerService, StorageService, CompressService>{
       [](const LoggerService &logger, const StorageService &storage,

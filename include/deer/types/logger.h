@@ -4,9 +4,12 @@
 
 namespace deer {
 
-/** @deer.types.LoggerService */
+/**
+ * Internal logging service.
+ * Provides a standardized way to emit debug and operational messages.
+ */
 struct LoggerService {
-  /** @deer.types.LoggerService.Log */
+  /// Simple string-based log emission.
   std::function<void(std::string_view)> log = nullptr;
 };
 
