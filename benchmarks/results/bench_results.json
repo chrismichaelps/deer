@@ -1,0 +1,475 @@
+{
+  "compression": [
+    {
+      "chunks": 7,
+      "deer_bytes": 843,
+      "deer_compression_pct": 92.56417041545383,
+      "features": 12,
+      "gzip_bytes": 2656,
+      "gzip_compression_pct": 76.57228543706448,
+      "level": "fast",
+      "raw_bytes": 11337,
+      "turns": 50
+    },
+    {
+      "chunks": 7,
+      "deer_bytes": 1272,
+      "deer_compression_pct": 88.78010055570257,
+      "features": 20,
+      "gzip_bytes": 2656,
+      "gzip_compression_pct": 76.57228543706448,
+      "level": "balanced",
+      "raw_bytes": 11337,
+      "turns": 50
+    },
+    {
+      "chunks": 7,
+      "deer_bytes": 1698,
+      "deer_compression_pct": 85.02249272294257,
+      "features": 28,
+      "gzip_bytes": 2656,
+      "gzip_compression_pct": 76.57228543706448,
+      "level": "max",
+      "raw_bytes": 11337,
+      "turns": 50
+    },
+    {
+      "chunks": 13,
+      "deer_bytes": 913,
+      "deer_compression_pct": 95.89496875140506,
+      "features": 12,
+      "gzip_bytes": 2872,
+      "gzip_compression_pct": 87.08691155973203,
+      "level": "fast",
+      "raw_bytes": 22241,
+      "turns": 100
+    },
+    {
+      "chunks": 13,
+      "deer_bytes": 1416,
+      "deer_compression_pct": 93.63337979407402,
+      "features": 20,
+      "gzip_bytes": 2872,
+      "gzip_compression_pct": 87.08691155973203,
+      "level": "balanced",
+      "raw_bytes": 22241,
+      "turns": 100
+    },
+    {
+      "chunks": 13,
+      "deer_bytes": 1971,
+      "deer_compression_pct": 91.13798839980217,
+      "features": 28,
+      "gzip_bytes": 2872,
+      "gzip_compression_pct": 87.08691155973203,
+      "level": "max",
+      "raw_bytes": 22241,
+      "turns": 100
+    },
+    {
+      "chunks": 25,
+      "deer_bytes": 993,
+      "deer_compression_pct": 97.80722093408414,
+      "features": 12,
+      "gzip_bytes": 3271,
+      "gzip_compression_pct": 92.7768576791432,
+      "level": "fast",
+      "raw_bytes": 45285,
+      "turns": 200
+    },
+    {
+      "chunks": 25,
+      "deer_bytes": 1661,
+      "deer_compression_pct": 96.33211880313569,
+      "features": 20,
+      "gzip_bytes": 3271,
+      "gzip_compression_pct": 92.7768576791432,
+      "level": "balanced",
+      "raw_bytes": 45285,
+      "turns": 200
+    },
+    {
+      "chunks": 25,
+      "deer_bytes": 2424,
+      "deer_compression_pct": 94.64723418350447,
+      "features": 28,
+      "gzip_bytes": 3271,
+      "gzip_compression_pct": 92.7768576791432,
+      "level": "max",
+      "raw_bytes": 45285,
+      "turns": 200
+    },
+    {
+      "chunks": 63,
+      "deer_bytes": 1316,
+      "deer_compression_pct": 98.8223608264951,
+      "features": 12,
+      "gzip_bytes": 4384,
+      "gzip_compression_pct": 96.07692238856723,
+      "level": "fast",
+      "raw_bytes": 111749,
+      "turns": 500
+    },
+    {
+      "chunks": 63,
+      "deer_bytes": 2326,
+      "deer_compression_pct": 97.9185496067079,
+      "features": 20,
+      "gzip_bytes": 4384,
+      "gzip_compression_pct": 96.07692238856723,
+      "level": "balanced",
+      "raw_bytes": 111749,
+      "turns": 500
+    },
+    {
+      "chunks": 63,
+      "deer_bytes": 3735,
+      "deer_compression_pct": 96.65768821197504,
+      "features": 28,
+      "gzip_bytes": 4384,
+      "gzip_compression_pct": 96.07692238856723,
+      "level": "max",
+      "raw_bytes": 111749,
+      "turns": 500
+    }
+  ],
+  "fidelity": [
+    {
+      "cosine_similarity": -0.04800748651292693,
+      "level": "fast",
+      "max_abs_error": 2.145686292354402,
+      "mse": 0.6324992673407343,
+      "turns": 50
+    },
+    {
+      "cosine_similarity": -0.044448134959361806,
+      "level": "balanced",
+      "max_abs_error": 2.151448402168592,
+      "mse": 0.3790403819949277,
+      "turns": 50
+    },
+    {
+      "cosine_similarity": -0.035207254695335366,
+      "level": "max",
+      "max_abs_error": 2.638144983810257,
+      "mse": 0.4065634354114565,
+      "turns": 50
+    },
+    {
+      "cosine_similarity": 0.02268626913796937,
+      "level": "fast",
+      "max_abs_error": 1.9953395277054915,
+      "mse": 0.5929539724642612,
+      "turns": 100
+    },
+    {
+      "cosine_similarity": -0.05095918833077784,
+      "level": "balanced",
+      "max_abs_error": 2.1459494914970536,
+      "mse": 0.38563794251392886,
+      "turns": 100
+    },
+    {
+      "cosine_similarity": -0.02750377075661585,
+      "level": "max",
+      "max_abs_error": 2.6540015994874415,
+      "mse": 0.39916334181087876,
+      "turns": 100
+    },
+    {
+      "cosine_similarity": 0.02301123404240728,
+      "level": "fast",
+      "max_abs_error": 1.994225966441723,
+      "mse": 0.589921702706917,
+      "turns": 200
+    },
+    {
+      "cosine_similarity": 0.023019327132972844,
+      "level": "balanced",
+      "max_abs_error": 2.0023460825712314,
+      "mse": 0.35519231266458584,
+      "turns": 200
+    },
+    {
+      "cosine_similarity": -0.031512343466656025,
+      "level": "max",
+      "max_abs_error": 2.6869604199402293,
+      "mse": 0.39986668472476367,
+      "turns": 200
+    },
+    {
+      "cosine_similarity": 0.017725799834342783,
+      "level": "fast",
+      "max_abs_error": 1.9987090863266899,
+      "mse": 0.5927135112142087,
+      "turns": 500
+    },
+    {
+      "cosine_similarity": 0.019478672677362623,
+      "level": "balanced",
+      "max_abs_error": 2.000744120808631,
+      "mse": 0.35590984406786663,
+      "turns": 500
+    },
+    {
+      "cosine_similarity": 0.011898484415309739,
+      "level": "max",
+      "max_abs_error": 2.548865805991686,
+      "mse": 0.3790426343552173,
+      "turns": 500
+    }
+  ],
+  "golden_fact": [
+    {
+      "cohens_d": 1.0958087894245199,
+      "detection_rate_pct": 60.0,
+      "fact_chunks": 20,
+      "fact_norm_mean": 1.9447419662796137,
+      "fact_norm_std": 0.2173174619100873,
+      "filler_chunks": 5,
+      "filler_norm_mean": 1.702777386852106,
+      "filler_norm_std": 0.22424642625063704,
+      "level": "fast"
+    },
+    {
+      "cohens_d": 1.2251796034654268,
+      "detection_rate_pct": 60.0,
+      "fact_chunks": 20,
+      "fact_norm_mean": 1.9728680615835537,
+      "fact_norm_std": 0.2245469328407821,
+      "filler_chunks": 5,
+      "filler_norm_mean": 1.701871330272254,
+      "filler_norm_std": 0.2177800932671847,
+      "level": "balanced"
+    },
+    {
+      "cohens_d": 0.8960264986519962,
+      "detection_rate_pct": 55.0,
+      "fact_chunks": 20,
+      "fact_norm_mean": 2.3674596060229742,
+      "fact_norm_std": 0.27030783407765935,
+      "filler_chunks": 5,
+      "filler_norm_mean": 2.120843038736678,
+      "filler_norm_std": 0.28007267825881116,
+      "level": "max"
+    }
+  ],
+  "latency": [
+    {
+      "compress_us": {
+        "mean": 132.92541000000006,
+        "p50": 127.0,
+        "p95": 182.13509999999997,
+        "p99": 200.16566000000003,
+        "stddev": 21.78168397764278
+      },
+      "decompress_us": {
+        "mean": 33.63205000000001,
+        "p50": 32.4795,
+        "p95": 43.730599999999995,
+        "p99": 56.3695000000001,
+        "stddev": 6.412438196778196
+      },
+      "level": "fast",
+      "turns": 50
+    },
+    {
+      "compress_us": {
+        "mean": 179.47125,
+        "p50": 172.66649999999998,
+        "p95": 207.97225,
+        "p99": 233.7446700000002,
+        "stddev": 16.56589125002033
+      },
+      "decompress_us": {
+        "mean": 44.14505000000001,
+        "p50": 42.583,
+        "p95": 51.606249999999996,
+        "p99": 57.88075000000011,
+        "stddev": 4.9857176943244585
+      },
+      "level": "balanced",
+      "turns": 50
+    },
+    {
+      "compress_us": {
+        "mean": 296.2912600000001,
+        "p50": 292.14599999999996,
+        "p95": 321.24135,
+        "p99": 331.99809000000045,
+        "stddev": 16.530911384808764
+      },
+      "decompress_us": {
+        "mean": 58.37211000000002,
+        "p50": 57.1665,
+        "p95": 65.3819,
+        "p99": 69.15917000000002,
+        "stddev": 3.250472140766631
+      },
+      "level": "max",
+      "turns": 50
+    },
+    {
+      "compress_us": {
+        "mean": 161.65212000000002,
+        "p50": 158.64600000000002,
+        "p95": 177.95799999999997,
+        "p99": 184.98366000000036,
+        "stddev": 11.160583545030251
+      },
+      "decompress_us": {
+        "mean": 33.848769999999995,
+        "p50": 33.459,
+        "p95": 35.9316,
+        "p99": 41.81042000000003,
+        "stddev": 1.904575794527485
+      },
+      "level": "fast",
+      "turns": 100
+    },
+    {
+      "compress_us": {
+        "mean": 300.13374000000005,
+        "p50": 297.29200000000003,
+        "p95": 326.7503,
+        "p99": 351.8283300000001,
+        "stddev": 14.42785144338546
+      },
+      "decompress_us": {
+        "mean": 56.49668999999997,
+        "p50": 55.479,
+        "p95": 61.963100000000004,
+        "p99": 76.55900000000005,
+        "stddev": 4.24149616690856
+      },
+      "level": "balanced",
+      "turns": 100
+    },
+    {
+      "compress_us": {
+        "mean": 548.4625299999999,
+        "p50": 541.3544999999999,
+        "p95": 613.63545,
+        "p99": 642.09184,
+        "stddev": 25.825831874483733
+      },
+      "decompress_us": {
+        "mean": 83.82664999999997,
+        "p50": 82.1455,
+        "p95": 94.39759999999998,
+        "p99": 116.93509000000005,
+        "stddev": 7.462722726156989
+      },
+      "level": "max",
+      "turns": 100
+    },
+    {
+      "compress_us": {
+        "mean": 304.59124999999995,
+        "p50": 295.64599999999996,
+        "p95": 344.6402,
+        "p99": 416.68667000000056,
+        "stddev": 29.799121129447762
+      },
+      "decompress_us": {
+        "mean": 55.80951000000002,
+        "p50": 53.4995,
+        "p95": 63.10655,
+        "p99": 70.57792000000042,
+        "stddev": 10.353703388155372
+      },
+      "level": "fast",
+      "turns": 200
+    },
+    {
+      "compress_us": {
+        "mean": 563.0187700000002,
+        "p50": 551.9585,
+        "p95": 608.38365,
+        "p99": 682.5582500000004,
+        "stddev": 31.337257185929662
+      },
+      "decompress_us": {
+        "mean": 92.12040999999998,
+        "p50": 90.6665,
+        "p95": 104.31394999999999,
+        "p99": 116.67000000000002,
+        "stddev": 5.58850370509853
+      },
+      "level": "balanced",
+      "turns": 200
+    },
+    {
+      "compress_us": {
+        "mean": 1086.91171,
+        "p50": 1076.1045,
+        "p95": 1169.0701999999999,
+        "p99": 1245.2754200000004,
+        "stddev": 38.49122916751165
+      },
+      "decompress_us": {
+        "mean": 130.35292000000004,
+        "p50": 128.25,
+        "p95": 138.26875,
+        "p99": 147.33208000000016,
+        "stddev": 6.1623659753052635
+      },
+      "level": "max",
+      "turns": 200
+    },
+    {
+      "compress_us": {
+        "mean": 690.0196,
+        "p50": 679.604,
+        "p95": 750.24965,
+        "p99": 827.6792500000001,
+        "stddev": 32.700755088223886
+      },
+      "decompress_us": {
+        "mean": 118.75832000000003,
+        "p50": 117.104,
+        "p95": 126.2979,
+        "p99": 132.00824000000011,
+        "stddev": 5.100874254243089
+      },
+      "level": "fast",
+      "turns": 500
+    },
+    {
+      "compress_us": {
+        "mean": 1280.3095299999995,
+        "p50": 1265.771,
+        "p95": 1347.93365,
+        "p99": 1412.2165800000016,
+        "stddev": 56.05969713964838
+      },
+      "decompress_us": {
+        "mean": 197.26460000000003,
+        "p50": 195.3535,
+        "p95": 210.72465,
+        "p99": 214.17342000000005,
+        "stddev": 5.553187817821399
+      },
+      "level": "balanced",
+      "turns": 500
+    },
+    {
+      "compress_us": {
+        "mean": 2517.304150000001,
+        "p50": 2503.792,
+        "p95": 2599.6854,
+        "p99": 2695.033500000002,
+        "stddev": 62.48804916532043
+      },
+      "decompress_us": {
+        "mean": 278.2766399999999,
+        "p50": 275.688,
+        "p95": 294.26045,
+        "p99": 296.6575,
+        "stddev": 6.425100424927225
+      },
+      "level": "max",
+      "turns": 500
+    }
+  ]
+}
