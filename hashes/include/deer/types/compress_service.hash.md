@@ -8,4 +8,5 @@ Grammar_Lock: "@root/hashes/grammar/cpp.hash.md"
 - CompressService.compress: function<void(ArchiveState&, CompressionLevel)>
 - CompressService.decompress: function<void(ArchiveState&)>
 ### [Constraints]
+- v0.6: Uses SVD, Rotation, and Per-Channel Quant
 - Eigen/zlib details hidden; interface has no deps (never)

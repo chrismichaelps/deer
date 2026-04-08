@@ -9,4 +9,4 @@ Grammar_Lock: "@root/hashes/grammar/cpp.hash.md"
 ### [Layer]
 - RequirementsIn: ConfigService
 - RequirementsOut: CompressService
-- Delegates to ops::compressArchiveWithLevel, ops::decompressArchive
+- Delegates to v0.6 ops (Seeded Rotation + Per-Channel Quant)
