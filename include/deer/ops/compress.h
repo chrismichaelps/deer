@@ -18,8 +18,7 @@ inline void compressArchiveWithLevel(ArchiveState &state, config::CompressionLev
 /** @deer.ops.decompressArchive */
 inline void decompressArchive(ArchiveState &state);
 
-/// @brief Decodes __deflate back to compressed feature matrix for LLM context
-/// @deer.ops.decompressArchive
+/** @deer.ops.decompressArchive */
 inline void decompressArchive(ArchiveState &state) {
   if (!state.codedArchive.is_object() || !state.codedArchive.contains("__deflate")) {
     std::cout << "[Deer] No compressed archive found.\n";

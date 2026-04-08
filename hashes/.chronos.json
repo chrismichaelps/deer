@@ -3,11 +3,20 @@
     {
       "state_id": "BigInt(0x1)",
       "logic_delta": {
-        "intent": "Initial Effect-style Layer architecture refactoring",
-        "risk": "HIGH"
+        "intent": "Initial implementation: types, ops, cli, main",
+        "risk": "LOW"
       },
       "commit_ref": "N/A",
-      "description": "Created Layer 0 (types), Layer 1 (tags/services), Layer 2 (layers/runtime) with proper dependency management"
+      "description": "Baseline: ArchiveState, ops::load/save, ops::compress, cli::resume/add/help, main dispatcher"
+    },
+    {
+      "state_id": "BigInt(0x2)",
+      "logic_delta": {
+        "intent": "Layer architecture refactor — Effect-TS dependency graph pattern in C++20",
+        "risk": "MEDIUM"
+      },
+      "commit_ref": "N/A",
+      "description": "Added layer.h (Layer<Out,In...>, provide), service types (LoggerService, StorageService, CompressService, CliService, ConfigService), five live layers (config, logger, storage, compress, cli), two test stubs (StorageLayerTest, CompressLayerTest). main.cpp rewired to pure layer graph resolution. Dead import (#include <string>) and UB (dangling [&logger] capture) fixed in cli_layer.h. Banned /// @brief comment removed from ops/compress.h."
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
-  "graph_version": "1.0",
-  "state_anchor": "BigInt(0x1)",
+  "graph_version": "2.0",
+  "state_anchor": "BigInt(0x2)",
   "description": "Directional dependency edges. When an upstream node changes, all downstream nodes are flagged DIRTY.",
   "grammar_refs": {
     "lang": "@root/hashes/grammar/cpp.hash.md"
@@ -22,31 +22,80 @@
     },
     {
       "from": "types",
-      "to": "cli",
+      "to": "layer",
       "type": "LAYER_DEPENDENCY",
       "impact": "MEDIUM",
-      "reason": "cli/cli.h includes types/archive.h"
+      "reason": "layer.h is generic; service types extend Layer<Out, In...>"
+    },
+    {
+      "from": "types",
+      "to": "layers",
+      "type": "LAYER_DEPENDENCY",
+      "impact": "HIGH",
+      "reason": "All layer constructors include their respective service types"
     },
     {
       "from": "ops.archive",
-      "to": "main",
+      "to": "layers.storage",
       "type": "SCHEMA_CONTRACT",
       "impact": "HIGH",
-      "reason": "main.cpp calls ops::load, ops::save"
+      "reason": "storage_layer.h delegates to ops::load, ops::save"
     },
     {
       "from": "ops.compress",
-      "to": "main",
+      "to": "layers.compress",
       "type": "SCHEMA_CONTRACT",
       "impact": "HIGH",
-      "reason": "main.cpp calls ops::compressArchive"
+      "reason": "compress_layer.h delegates to ops::compressArchiveWithLevel, ops::decompressArchive"
     },
     {
-      "from": "cli",
+      "from": "layers",
       "to": "main",
       "type": "SCHEMA_CONTRACT",
       "impact": "HIGH",
-      "reason": "main.cpp calls cli::resume, cli::add, cli::help"
+      "reason": "main.cpp calls make_*_layer().build() for all services"
+    },
+    {
+      "from": "layers.config",
+      "to": "layers.logger",
+      "type": "LAYER_DEPENDENCY",
+      "impact": "HIGH",
+      "reason": "make_logger_layer() requires ConfigService"
+    },
+    {
+      "from": "layers.config",
+      "to": "layers.storage",
+      "type": "LAYER_DEPENDENCY",
+      "impact": "HIGH",
+      "reason": "make_storage_layer() requires ConfigService"
+    },
+    {
+      "from": "layers.config",
+      "to": "layers.compress",
+      "type": "LAYER_DEPENDENCY",
+      "impact": "HIGH",
+      "reason": "make_compress_layer() requires ConfigService"
+    },
+    {
+      "from": "layers.logger",
+      "to": "layers.cli",
+      "type": "LAYER_DEPENDENCY",
+      "impact": "MEDIUM",
+      "reason": "make_cli_layer() requires LoggerService"
+    },
+    {
+      "from": "layers.storage",
+      "to": "layers.cli",
+      "type": "LAYER_DEPENDENCY",
+      "impact": "HIGH",
+      "reason": "make_cli_layer() requires StorageService"
+    },
+    {
+      "from": "layers.compress",
+      "to": "layers.cli",
+      "type": "LAYER_DEPENDENCY",
+      "impact": "HIGH",
+      "reason": "make_cli_layer() requires CompressService"
     }
   ],
   "dirty_propagation_rule": "When a node's fidelity_level changes to DIRTY, recursively mark all nodes reachable via outgoing edges as DIRTY"

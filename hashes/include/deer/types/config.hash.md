@@ -1,5 +1,5 @@
 ---
-State_ID: BigInt(0x1)
+State_ID: BigInt(0x2)
 Git_SHA: [Current]
 Grammar_Lock: "@root/hashes/grammar/cpp.hash.md"
 ---
@@ -22,3 +22,5 @@ Grammar_Lock: "@root/hashes/grammar/cpp.hash.md"
 - CMD_COMPRESS: const char* = "compress"
 - CMD_DECOMPRESS: const char* = "decompress"
 - CMD_HELP: const char* = "help"
+### [Structs]
+- ConfigService: injectable value type wrapping all constants above

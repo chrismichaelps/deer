@@ -48,3 +48,8 @@ test_results/
 *.gcno
 *.gcda
 coverage/
+
+# Caches and Tools
+.cache/
+*.idx
+.clang-tidy
