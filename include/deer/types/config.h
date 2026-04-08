@@ -57,7 +57,7 @@ constexpr int QUANTIZATION_MIN = -8;
 constexpr int QUANTIZATION_MAX = 7;
 
 /** @deer.config.MethodVersion.Constant */
-inline const char *COMPRESSION_METHOD = "deer_v0.5_optimized";
+inline const char *COMPRESSION_METHOD = "deer_v0.6_research";
 
 /** @deer.config.LevelFast.String */
 inline const char *LEVEL_FAST = "fast";
