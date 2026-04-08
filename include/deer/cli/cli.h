@@ -6,7 +6,11 @@
 
 namespace deer::cli {
 
-/** @deer.cli.resume */
+/**
+ * Resumes from the given archive state by outputting it to stdout.
+ *
+ * @param state The current archive state.
+ */
 inline void resume(const ArchiveState &state) {
   json payload = {{"system", "You are resuming from the Deer memory archive."},
                   {"archive",
@@ -16,7 +20,11 @@ inline void resume(const ArchiveState &state) {
   std::cout << payload.dump(2) << "\n";
 }
 
-/** @deer.cli.add */
+/**
+ * Adds a new turn to the archive from standard input.
+ *
+ * @param state The archive state to append to.
+ */
 inline void add(ArchiveState &state) {
   std::string input((std::istreambuf_iterator<char>(std::cin)), {});
   if (!input.empty() && input.back() == '\n') {
@@ -28,7 +36,9 @@ inline void add(ArchiveState &state) {
   }
 }
 
-/** @deer.cli.help */
+/**
+ * Displays help documentation and command usage.
+ */
 inline void help() {
   std::cout << "Usage: deer [resume | add | compress]\n";
 }

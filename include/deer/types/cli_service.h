@@ -4,13 +4,16 @@
 
 namespace deer {
 
-/** @deer.types.CliService */
+/**
+ * Command Line Interface Service.
+ * Defines the contract for human-interactive operations.
+ */
 struct CliService {
-  /** @deer.types.CliService.Resume */
+  /// Displays the current status and recent memory of the archive.
   std::function<void(const ArchiveState &)> resume = nullptr;
-  /** @deer.types.CliService.Add */
+  /// Prompts user to add a new turn to the current archive.
   std::function<void(ArchiveState &)> add = nullptr;
-  /** @deer.types.CliService.Help */
+  /// Displays help documentation and command usage.
   std::function<void()> help = nullptr;
 };
 

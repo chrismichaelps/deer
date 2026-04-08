@@ -6,7 +6,9 @@
 
 namespace deer::layer {
 
-/** @deer.layers.Logger.Live */
+/**
+ * Constructs the LoggerService using its concrete dependencies.
+ */
 inline Layer<LoggerService, config::ConfigService> make_logger_layer() {
   return Layer<LoggerService, config::ConfigService>{
       [](const config::ConfigService &cfg) -> LoggerService {

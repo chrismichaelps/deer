@@ -4,18 +4,21 @@
 
 namespace deer {
 
-/** @deer.json.Alias */
+/// Alias for nlohmann::json.
 using json = nlohmann::json;
 
-/** @deer.ArchiveState.Struct */
+/**
+ * Represents the state of the conversation archive.
+ * Contains recent turns, memory slots, and the coded, compressed archive.
+ */
 struct ArchiveState {
-  /** @deer.ArchiveState.RecentTurns */
+  /// Recent uncompressed conversation turns.
   json recentTurns = json::array();
-  /** @deer.ArchiveState.MemorySlots */
+  /// User-defined memory slots.
   json memorySlots = json::array();
-  /** @deer.ArchiveState.CodedArchive */
+  /// The compressed payload of the long-term archive.
   json codedArchive = json::object();
-  /** @deer.ArchiveState.TokenEstimate */
+  /// Heuristic-based count of tokens currently in memory.
   size_t tokenEstimate = 0;
 };
 

@@ -6,7 +6,9 @@
 
 namespace deer::ops {
 
-/** @deer.ops.load */
+/**
+ * Loads the archive state from the given file path.
+ */
 inline ArchiveState load(const std::filesystem::path &path) {
   ArchiveState state;
   std::ifstream file(path);
@@ -25,7 +27,9 @@ inline ArchiveState load(const std::filesystem::path &path) {
   return state;
 }
 
-/** @deer.ops.save */
+/**
+ * Saves the archive state to the specified file path.
+ */
 inline void save(const ArchiveState &state, const std::filesystem::path &path) {
   json j = {{"recentTurns", state.recentTurns},
             {"memorySlots", state.memorySlots},

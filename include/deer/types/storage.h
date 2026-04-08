@@ -4,11 +4,14 @@
 
 namespace deer {
 
-/** @deer.types.StorageService */
+/**
+ * Archive persistence service.
+ * Handles reading to and from JSON structures on disk.
+ */
 struct StorageService {
-  /** @deer.types.StorageService.Load */
+  /// Loads the archive from storage.
   std::function<ArchiveState()> load = nullptr;
-  /** @deer.types.StorageService.Save */
+  /// Saves the current archive state to storage.
   std::function<void(const ArchiveState &)> save = nullptr;
 };
 
