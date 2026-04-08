@@ -243,4 +243,37 @@ When running `deer resume`, the output is formatted for LLM consumption:
 
 Deer demonstrates that hierarchical compression can dramatically reduce the storage requirements of conversation history while maintaining retrievable semantic content. The KVTC/TurboQuant pipeline achieves approximately 67% compression on typical inputs, all while remaining performant enough for real-time operation. The system provides a practical solution to the context window limitation that does not require modifications to the underlying language model itself.
 
-The architecture is available under the MIT license. The implementation uses modern C++20 with Eigen for linear algebra, nlohmann-json for serialization, and zlib for compression.
+The architecture is available under the [MIT license](https://github.com/chrismichaelps/deer/blob/main/LICENSE). The implementation uses modern C++20 with Eigen for linear algebra, nlohmann-json for serialization, and zlib for compression.
+
+---
+
+### **:busts_in_silhouette: Credits**
+
+- [Chris Michael](https://github.com/chrismichaelps) (Project Leader, and Developer)
+
+---
+
+### **:anger: Troubleshootings**
+
+This is just a personal project created for study / demonstration purpose and to simplify my working life, it may or may
+not be a good fit for your project(s).
+
+---
+
+### **:heart: Show your support**
+
+Please :star: this repository if you like it or this project helped you!\
+Feel free to open issues or submit pull-requests to help me improving my work.
+
+---
+
+### **:robot: Author**
+
+_*Chris M. Perez*_
+
+> You can follow me on
+> [github](https://github.com/chrismichaelps)&nbsp;&middot;&nbsp;[twitter](https://twitter.com/Chris5855M)
+
+---
+
+Copyright ©2026 [Deer](https://github.com/chrismichaelps/deer).
