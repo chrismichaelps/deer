@@ -13,6 +13,7 @@ A Hierarchical Memory System for Large Language Models
 ---
 
 > Updated: Tue Apr 7 2026
+> Version: 0.6.0
 
 ## Abstract
 
@@ -66,9 +67,9 @@ The complete pipeline operates in under one millisecond for typical conversation
 
 ### 3.1 Code Organization
 
-The implementation follows an Effect-inspired architectural pattern. Type-safe tags identify service interfaces, clean abstractions separate concerns, and layer construction manages dependency injection at initialization time.
+The implementation follows a Layer-based architectural pattern with dependency injection. The system uses layer composition to build services: config, then logger/storage/compress, then cli. Each layer is a composable unit with explicit dependencies.
 
-The core headers reside in include/deer: types/config.h defines compression levels and constants, types/archive.h contains the ArchiveState structure, types/errors.h specifies error types, and types/version.h declares version strings. The operational layer in ops/ provides archive loading and saving in ops/archive.h, while ops/compress.h implements the compression and decompression logic. The CLI layer in cli/cli.h handles command routing.
+The core headers reside in include/deer: types/config.h defines compression levels and constants, types/archive.h contains the ArchiveState structure, types/errors.h specifies error types, types/version.h declares version strings, and types/ contains service interfaces (cli_service.h, compress_service.h, logger.h, storage.h). The layer implementations in layers/ (config_layer.h, logger_layer.h, storage_layer.h, compress_layer.h, cli_layer.h) provide the concrete service construction. The operational layer in ops/ provides archive loading and saving in ops/archive.h, while ops/compress.h implements the compression and decompression logic. The CLI layer in cli/cli.h handles command routing.
 
 ### 3.2 Compression Levels
 
@@ -102,12 +103,12 @@ These three dependencies together provide the mathematical, serialization, and c
 
 All commands were verified across the three compression levels and the decompress operation.
 
-| Operation | Features | Execution Time |
-|-----------|----------|---------------|
-| compress --fast | 12 | ~0.35ms |
-| compress --balanced | 20 | ~0.08ms |
-| compress --max | 28 | ~0.14ms |
-| decompress | restores matrix | ~0.20ms |
+| Operation | Features | Execution Time | Notes |
+|-----------|----------|---------------|-------|
+| compress --fast | 12 | ~0.4ms | per-channel INT4, seeded rotation |
+| compress --balanced | 20 | ~0.08ms | per-channel INT4, seeded rotation |
+| compress --max | 28 | ~0.09ms | per-channel INT4, seeded rotation |
+| decompress | restores matrix | ~0.11ms | rotation inverted |
 
 The decompress operation successfully restores a chunks × features matrix from the __deflate field, verifying round-trip correctness.
 
@@ -180,7 +181,7 @@ The archive file `deer_archive.json` contains the complete memory state:
     "original_size": 71,
     "compressed_size": 33,
     "encoding": "hex",
-    "method": "deer_v0.5_optimized",
+    "method": "deer_v0.6_research",
     "chunks": 1,
     "level": "max"
   },
@@ -243,7 +244,7 @@ When running `deer resume`, the output is formatted for LLM consumption:
 
 Deer demonstrates that hierarchical compression can dramatically reduce the storage requirements of conversation history while maintaining retrievable semantic content. The KVTC/TurboQuant pipeline achieves approximately 67% compression on typical inputs, all while remaining performant enough for real-time operation. The system provides a practical solution to the context window limitation that does not require modifications to the underlying language model itself.
 
-The architecture is available under the [MIT license](https://github.com/chrismichaelps/deer/blob/main/LICENSE). The implementation uses modern C++20 with Eigen for linear algebra, nlohmann-json for serialization, and zlib for compression.
+The architecture is available under the [MIT license](https://github.com/chrismichaelps/deer/blob/main/LICENSE). The implementation uses modern C++20 with Layer-based dependency injection architecture. Eigen handles linear algebra, nlohmann-json handles serialization, and zlib provides deflate compression.
 
 ---
 
